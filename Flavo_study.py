@@ -2,12 +2,14 @@ import os
 from os.path import join
 import pandas as pd
 
+#создаю список штаммов, указанных в текстовом файле
 with open("species.txt", "r") as inp:
     list_of_spec = inp.read()
     list_of_spec = list_of_spec.split()
 
 # print(list_of_spec)
 
+#создаю список путей к сбокам для данных штаммов, указать свой путь в директорию со сборками Flavobacterium-PULs-master
 list_fileread = []
 
 for root, dirs, files in os.walk('C:\\Users\\Artem\\Desktop\\Flav_study\\Flavobacterium-PULs-master\\'):
@@ -17,7 +19,8 @@ for root, dirs, files in os.walk('C:\\Users\\Artem\\Desktop\\Flav_study\\Flavoba
                 list_fileread.append("%s" % join(root, filename))
 
 # print(list_fileread)
-#
+
+# открываю файлы сборок по указанным путям и вычищаю из них лишнее, остаются только названия штаммов и пулов записываю инфу для каждого штамма с новой строчки в out.txt
 for m in range(len(list_fileread)):
     # data_for_sp = []
     # data_for_sp.append(list_of_spec[m])
